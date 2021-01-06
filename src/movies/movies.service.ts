@@ -5,7 +5,6 @@ import { Movie } from './entities/movie.entity';
 
 @Injectable()
 export class MoviesService {
-
   private movies: Movie[] = [];
 
   getAll(): Movie[] {
@@ -13,7 +12,7 @@ export class MoviesService {
   }
 
   getOne(id: number): Movie {
-    const movie = this.movies.find(movie => movie.id === id);
+    const movie = this.movies.find((movie) => movie.id === id);
 
     if (!movie) {
       throw new NotFoundException(`Movie with id ${id} not found.`);
@@ -23,20 +22,20 @@ export class MoviesService {
   }
 
   deleteOne(id: number): void {
-    this.getOne(id)
-    this.movies = this.movies.filter(movie => movie.id !== id);
+    this.getOne(id);
+    this.movies = this.movies.filter((movie) => movie.id !== id);
   }
 
   create(movieData: CreateMovieDto): void {
     this.movies.push({
       id: this.movies.length + 1,
-      ...movieData
+      ...movieData,
     });
   }
 
   update(id: number, updateData: UpdateMovieDto): void {
     const movie = this.getOne(id);
     this.deleteOne(id);
-    this.movies.push({ ...movie, ...updateData});
+    this.movies.push({ ...movie, ...updateData });
   }
 }
