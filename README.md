@@ -33,11 +33,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Adding the controller
-
-```bash
-$ nest generate controller
-or
-$ nest g co
-```
